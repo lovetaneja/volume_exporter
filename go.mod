@@ -2,7 +2,10 @@ module github.com/lovetaneja/volume_exporter
 
 go 1.18
 
-require github.com/prometheus/client_golang v1.12.1
+require (
+	github.com/lovetaneja/volume_exporter/exporter v0.0.0-20220512200233-655cb57c8473
+	github.com/prometheus/client_golang v1.12.1
+)
 
 require (
 	github.com/beorn7/perks v1.0.1 // indirect

@@ -25,7 +25,7 @@ func (v *volumePaths) Set(value string) error {
 }
 
 func (v *volumePaths) String() string {
-	return fmt.Sprint(v)
+	return fmt.Sprint()
 }
 
 type volumeOpts struct {
@@ -34,8 +34,6 @@ type volumeOpts struct {
 
 func main() {
 	log.Println("Starting Volume Exporter")
-	// Start the Server
-	log.Fatal(serverMetrics(*listenAddress, *metricPath))
 
 	// Set up command line options
 	flag.Var(&opts.volumePath, "volume-dir", "Volume to report. Format is volumneName:volumeDir")
@@ -47,6 +45,9 @@ func main() {
 		os.Exit(1)
 	}
 	exporter.Register()
+
+	// Start the Server
+	log.Fatal(serverMetrics(*listenAddress, *metricPath))
 }
 
 func serverMetrics(listenAddress, metricsPath string) error {
