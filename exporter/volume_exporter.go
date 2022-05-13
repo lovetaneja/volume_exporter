@@ -28,11 +28,11 @@ func (collector *volumeCollector) Describe(ch chan<- *prometheus.Desc) {
 func (collector *volumeCollector) Collect(ch chan<- prometheus.Metric) {
 	var metricValue float64
 	if 1 == 1 {
-		metricValue = 12
+		metricValue = 20
 	}
 	ch <- prometheus.MustNewConstMetric(collector.volumeBytesTotal, prometheus.GaugeValue, metricValue, "log", "path")
-	ch <- prometheus.MustNewConstMetric(collector.volumeBytesFree, prometheus.GaugeValue, metricValue, "log", "path")
-	ch <- prometheus.MustNewConstMetric(collector.volumeBytesUsed, prometheus.GaugeValue, metricValue, "log", "path")
+	ch <- prometheus.MustNewConstMetric(collector.volumeBytesFree, prometheus.GaugeValue, metricValue-8, "log", "path")
+	ch <- prometheus.MustNewConstMetric(collector.volumeBytesUsed, prometheus.GaugeValue, metricValue-12, "log", "path")
 }
 
 func Register() {
